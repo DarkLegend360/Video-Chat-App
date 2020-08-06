@@ -7,14 +7,14 @@
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
-    margin: auto;
     height: 87.2vh;
     overflow: auto;
 }
 video {
-    padding:5px;
-    min-width: 50px;
-    min-height: 50px;
+    padding:20px;
+    min-width: 120px;
+    min-height: 100px;
+    height: 39vh;
 }
 .header {
     height: 6vh;
