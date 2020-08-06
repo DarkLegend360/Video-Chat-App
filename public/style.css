@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#video-grid {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: auto;
+    height: 87.2vh;
+    overflow: auto;
+}
+video {
+    padding:5px;
+    min-width: 50px;
+    min-height: 50px;
+}
+.header {
+    height: 6vh;
+    border: solid;
+    background-color: #393e46;
+}
+.menu {
+    height: 5.4vh;
+    border: solid;
+    background-color: #393e46;
+}
+
+.top {
+    font-family: 'Bigelow Rules', cursive;
+    text-align: center;
+    font-size: 5.5vh;
+    color: #0ccac4;
+    letter-spacing: .4vw;
+}
