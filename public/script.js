@@ -50,3 +50,30 @@ const addVideoStream = (video,stream) =>{
     });
     videoGrid.append(video);
 }
+
+const toggleMute = () => {
+    const enabled = videoStream.getAudioTracks()[0].enabled;
+    if (enabled) {
+        videoStream.getAudioTracks()[0].enabled = false;
+      const html = `<i class="myIcon fas fa-microphone-slash"></i><span class="myText">Mute</span>`
+      document.querySelector('#muteUnmute').innerHTML = html;
+    } else {
+    const html = `<i class="myIcon fas fa-microphone"></i><span class="myText">Mute</span>`
+      document.querySelector('#muteUnmute').innerHTML = html;
+      videoStream.getAudioTracks()[0].enabled = true;
+    }
+  }
+  
+  const toggleVideo = () => {
+    let enabled = videoStream.getVideoTracks()[0].enabled;
+    if (enabled) {
+        videoStream.getVideoTracks()[0].enabled = false;
+        const html = `<i class="myIcon fas fa-video-slash"></i><span class="myText">Play Video</span>`
+        document.querySelector('#videoToggle').innerHTML = html;
+    } else {
+        const html = `
+        <i class="myIcon fas fa-video"></i><span class="myText">Stop Video</span>`
+      document.querySelector('#videoToggle').innerHTML = html;
+      videoStream.getVideoTracks()[0].enabled = true;
+    }
+  }
