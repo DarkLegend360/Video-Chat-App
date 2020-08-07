@@ -9,10 +9,10 @@ const videoGrid = document.getElementById('video-grid');
 const myVideo = document.createElement('video');
 myVideo.muted = true;
 let videoStream;
-var front = false;
-var constraints = { facingMode: (front? "user" : "environment") };
+//var front = false;
+//var constraints = { facingMode: (front? "user" : "environment") };
 navigator.mediaDevices.getUserMedia({
-    video:constraints,
+    video:true,
     audio:true
 }).then(stream =>{
     videoStream=stream;
