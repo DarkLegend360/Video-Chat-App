@@ -8,9 +8,9 @@ const peerServer = ExpressPeerServer(server,{
     debug:true
 });
 
+app.use('/peerjs',peerServer);
 app.set('view engine','ejs');
 app.use(express.static('public'));
-app.use('/peerjs',peerServer);
 
 app.get("/",(req,res)=>{
     res.redirect(`/${uuidv4()}`);

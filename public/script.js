@@ -1,24 +1,22 @@
 const socket = io("/");
-// var peer = new Peer(undefined,{
-//     path:'/peerjs',
-//     host:'/',
-//     port:'3030'
-// }); 
-var peer = new Peer(); 
+var peer = new Peer(undefined,{
+    path:'/peerjs',
+    host:'/',
+    port:'443'
+}); 
+// var peer = new Peer(); 
 const videoGrid = document.getElementById('video-grid');
 const myVideo = document.createElement('video');
 myVideo.muted = true;
 let videoStream;
+var front = false;
+var constraints = { facingMode: (front? "user" : "environment") };
 navigator.mediaDevices.getUserMedia({
-    video:true,
+    video:constraints,
     audio:true
 }).then(stream =>{
     videoStream=stream;
     addVideoStream(myVideo,stream);
-
-    socket.on('user-connected',userId=>{
-        connectToNewUser(userId,stream);
-    });
 
     peer.on('call',call=>{
         console.log("Answer");
@@ -28,6 +26,11 @@ navigator.mediaDevices.getUserMedia({
             addVideoStream(video,userVideoStream);
         })
     });
+
+    socket.on('user-connected',userId=>{
+        connectToNewUser(userId,stream);
+    });
+
 });
 
 peer.on('open',id=>{
@@ -76,4 +79,9 @@ const toggleMute = () => {
       document.querySelector('#videoToggle').innerHTML = html;
       videoStream.getVideoTracks()[0].enabled = true;
     }
+  }
+
+const toggleCamera = () =>{
+    front=!front;
+    console.log("Changed");
   }
